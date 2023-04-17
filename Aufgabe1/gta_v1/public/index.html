@@ -13,15 +13,14 @@
 </head>
 
 <body>
-    
-    <header class="row" id = "header">
-        <div id = "header__picture" class="col-2">
-            <img src="./images/location.png" class="header__image col-11" alt="an image of a map and location">
+    <header  id="header">
+        <div id="header__picture" class="col-3">
+            <img src="./images/location.png" class="header__image" alt="an image of a map and location">
         </div>
-        <div id = "header__Name" class = "col-8">
+        <div id="header__Name" class="col-8-alt">
             <h1 class="header__title">GeoTagApp</h1>
         </div>
-        <div id = "header__rightcolumn" class = "col-2">
+        <div id="header__rightcolumn" class="col-3">
             <nav class="header__navigation">
                 <a href="#">About</a> | <a href="#">Help</a> | <a href="/">Home</a>
             </nav>
@@ -35,22 +34,24 @@
             <!-- ############### VS1Lab 1a Form 1 Start -->
             <form id="tag-form" action="/tagging" method="post">
                 <fieldset>
-                <legend>Add new GeoTag</legend>
-                
-                <label for="input__latitude" class = "entryblock">Latitude:</label>           
-                <input id="input__latitude" class = "entryblock" placeholder="e.g 49.01379" disabled></input>
-            
-                <label for="input__longtitude" class = "entryblock">Longitude:</label>
-                <input id="input__longtitude" class = "entryblock" placeholder="e.g 8.03223" disabled></input>
-            
-                <label for="input__name" class = "entryblock">Name:</label>
-                <input id="input__name" class = "entryblock" placeholder="e.g central Karlsruhe" required maxlength="10"></input>                
-            
-                <label for="input__hashtag" class = "entryblock">Hashtag:</label>
-                <input id="input__hashtag" class = "entryblock" placeholder="e.g #KA" pattern="#.*" maxlength="10"></input>
-          
-                <button type="submit">Add Tag</button>
-            </fieldset>
+                    <legend>Add new GeoTag</legend>
+
+                    <label for="input__latitude" class="entryblockLeft">Latitude:</label>
+                    <input id="input__latitude" class="entryblockLeft" placeholder="e.g 49.01379" disabled></input>
+
+                    <label for="input__longtitude" class="entryblockLeft">Longitude:</label>
+                    <input id="input__longtitude" class="entryblockLeft" placeholder="e.g 8.03223" disabled></input>
+
+                    <label for="input__name" class="entryblockLeft">Name:</label>
+                    <input id="input__name" class="entryblockLeft" placeholder="e.g central Karlsruhe" required
+                        maxlength="10"></input>
+
+                    <label for="input__hashtag" class="entryblockLeft">Hashtag:</label>
+                    <input id="input__hashtag" class="entryblockLeft" placeholder="e.g #KA" pattern="#.*"
+                        maxlength="10"></input>
+
+                    <button type="submit" class="entryblockLeft">Add Tag</button>
+                </fieldset>
             </form>
             <!-- ############### VS1Lab 1a Form 1 End -->
 
@@ -63,12 +64,12 @@
             <form class="discovery__search entryblock" id="discoveryFilterForm" action="/discovery" method="post">
                 <fieldset>
                     <legend>Search</legend>
-                    <label for="input__search" entryblock>Search terms or keywords:</label>
-                    <input id="input__search" placeholder="e.g KA" entryblock></input>
-                    <input hidden id="search__latitude" entryblock></input>
-                    <input hidden id="search__longtitude" entryblock></input>
-                    <button type="submit">Search</button>
-                </fieldset>    
+                    <label for="input__search" class="entryblockRight">Search terms or keywords:</label>
+                    <input id="input__search" placeholder="e.g KA" class="entryblockRight"></input>
+                    <input id="search__latitude" hidden></input>
+                    <input id="search__longtitude" hidden></input>
+                    <button type="submit" class="entryblockRight">Search</button>
+                </fieldset>
 
             </form>
             <!-- ############### VS1Lab 1a Form 2 End -->
@@ -91,7 +92,7 @@
     </main>
 
     <footer class="footer">
-        <span>(c) 2021/22 HKA_IWI_VSYS</span>
+        <span class="span_text">(c) 2021/22 HKA_IWI_VSYS</span>
     </footer>
 </body>
 

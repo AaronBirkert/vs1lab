@@ -90,6 +90,9 @@ a {
   width: calc(66.66% - 1rem);
 }
 
+.col-8-alt {
+  width: calc(66.66% - 1rem);
+}
 .col-9 {
   width: calc(75% - 1rem);
 }
@@ -107,7 +110,9 @@ a {
 }
 
 .header__image{
-  max-height:max-content;
+  width: 80px;
+  height: 80px;
+  vertical-align:middle;
 }
 
 #header{
@@ -116,6 +121,7 @@ a {
   height: 100px;
   line-height:100px;
   background-color: #cdcdcd;
+  display:flex;
 }
 
 #header__rightcoloumn{
@@ -124,6 +130,17 @@ a {
 
 .footer {
   background-color: #cdcdcd;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  vertical-align: bottom;
+  position: absolute;
+  line-height: 50px;
+}
+
+.span_text {
+  vertical-align: middle;
 }
 
 #tag-form{
@@ -135,40 +152,99 @@ a {
   margin-top: 1em;
 }
 
-.entryblock{
-  display: block;
-  margin: 5px;
+.main__discovery {
+  margin-top: 1em;
+  margin-right: 1em;
+  margin-left: 2em;
 }
 
+.entryblockLeft{
+  display: block;
+  margin: 10px;
+  width: 90%;
+}
 
+.entryblockRight{
+  display: block;
+  margin: 10px;
+  width: 30%;
+}
+.discovery__wrapper {
+  display: flex;
+  margin-top: 2em
+}
 
+.discovery__map {
+  margin-left: 2em;
+  display:flex;
+  flex-direction: column;
+}
 
+input {
+  padding: 10px;
+}
 
-/* ### TODO ### Styles for Header Component */
+legend {
+  margin-left: 15px;
+  font-weight: bold;
+}
 
-/* ... your code here ... */
+button {
+  padding: 10px;
+}
 
+form {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
 
-/* ### TODO ### Styles for Main Component */
+li {
+  list-style-type: none;
+  padding: 15px;
+  border: solid 2px darkgray;
+  background-color: #EAEAEA;
+  margin-bottom: 10px;
+}
 
-/* ... your code here ... */
+@media screen and (max-width: 850px) {
+  .discovery__map{
+    margin-left: 0.45rem;
+  }
 
+  .row {
+    flex-direction: column;
+  }
 
-/* ### TODO ### Styles for Tagging component */
+  .col-3 {
+    width: 100%;
+  }
 
-/* ... your code here ... */
+  .col-4 {
+    width: 100%;
+  }
 
+  .col-8 {
+    width: 100%;
+  }
 
-/* ### TODO ### Styles for Discovery component */
+  .col-9 {
+    width: 100%;
+  }
+  
+  .main__tagging {
+    padding-right: 2em;
+  }
 
-/* ... your code here ... */
+  .main__discovery {
+    padding-right: 2em;
+    margin-left: 1em;
+  }
 
+  .discovery__wrapper {
+    margin-right: 1em;
+  }
 
-/* ### TODO ### Styles for Footer Component */
-
-/* ... your code here ... */
-
-
-/* ### TODO ### Media Queries */
-
-/* ... your code here ... */
+  .footer {
+    position: sticky;
+  }
+}
