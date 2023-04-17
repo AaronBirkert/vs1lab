@@ -55,7 +55,7 @@ a {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  flex: 1;
+  /*flex: 1;*/
 }
 
 .col-1 {
@@ -105,6 +105,43 @@ a {
 .col-12 {
   width: calc(100% - 1rem);
 }
+
+.header__image{
+  max-height:max-content;
+}
+
+#header{
+  text-align: center;
+  min-height: 1em;
+  height: 100px;
+  line-height:100px;
+  background-color: #cdcdcd;
+}
+
+#header__rightcoloumn{
+  margin-top: 1em;
+}
+
+.footer {
+  background-color: #cdcdcd;
+}
+
+#tag-form{
+  display: block;
+}
+
+.main__tagging{
+  margin-left: 1em;
+  margin-top: 1em;
+}
+
+.entryblock{
+  display: block;
+  margin: 5px;
+}
+
+
+
 
 
 /* ### TODO ### Styles for Header Component */

@@ -13,30 +13,42 @@
 </head>
 
 <body>
-    <header class="header">
-        <img src="./images/location.png" class="header__image" alt="an image of a map and location">
-        <h1 class="header__title">GeoTagApp</h1>
-        <nav class="header__navigation">
-            <a href="#">About</a> | <a href="#">Help</a> | <a href="/">Home</a>
-        </nav>
+    
+    <header class="row" id = "header">
+        <div id = "header__picture" class="col-2">
+            <img src="./images/location.png" class="header__image col-11" alt="an image of a map and location">
+        </div>
+        <div id = "header__Name" class = "col-8">
+            <h1 class="header__title">GeoTagApp</h1>
+        </div>
+        <div id = "header__rightcolumn" class = "col-2">
+            <nav class="header__navigation">
+                <a href="#">About</a> | <a href="#">Help</a> | <a href="/">Home</a>
+            </nav>
+        </div>
     </header>
 
-    <main class="main">
-        <section class="main__tagging tagging">
+    <main class="main row">
+        <section class="main__tagging tagging col-4">
             <h2>Tagging</h2>
 
             <!-- ############### VS1Lab 1a Form 1 Start -->
             <form id="tag-form" action="/tagging" method="post">
                 <fieldset>
                 <legend>Add new GeoTag</legend>
-                <label for="input__latitude">Latitude:</label>
-                <input id="input__latitude" placeholder="e.g 49.01379" disabled></input>
-                <label for="input__longtitude">Longitude:</label>
-                <input id="input__longtitude" placeholder="e.g 8.03223" disabled></input>
-                <label for="input__name">Name:</label>
-                <input id="input__name" placeholder="e.g central Karlsruhe" required maxlength="10"></input>
-                <label for="input__hashtag">Hashtag:</label>
-                <input id="input__hashtag" placeholder="e.g #KA" pattern="#.*" maxlength="10"></input>
+                
+                <label for="input__latitude" class = "entryblock">Latitude:</label>           
+                <input id="input__latitude" class = "entryblock" placeholder="e.g 49.01379" disabled></input>
+            
+                <label for="input__longtitude" class = "entryblock">Longitude:</label>
+                <input id="input__longtitude" class = "entryblock" placeholder="e.g 8.03223" disabled></input>
+            
+                <label for="input__name" class = "entryblock">Name:</label>
+                <input id="input__name" class = "entryblock" placeholder="e.g central Karlsruhe" required maxlength="10"></input>                
+            
+                <label for="input__hashtag" class = "entryblock">Hashtag:</label>
+                <input id="input__hashtag" class = "entryblock" placeholder="e.g #KA" pattern="#.*" maxlength="10"></input>
+          
                 <button type="submit">Add Tag</button>
             </fieldset>
             </form>
@@ -44,17 +56,17 @@
 
         </section>
 
-        <section class="main__discovery discovery">
+        <section class="main__discovery discovery col-8">
             <h2 class="discovery__title">Discovery</h2>
 
             <!-- ############### VS1Lab 1a Form 2 Start -->
-            <form class="discovery__search" id="discoveryFilterForm" action="/discovery" method="post">
+            <form class="discovery__search entryblock" id="discoveryFilterForm" action="/discovery" method="post">
                 <fieldset>
                     <legend>Search</legend>
-                    <label for="input__search">Search terms or keywords:</label>
-                    <input id="input__search" placeholder="e.g KA"></input>
-                    <input hidden id="search__latitude"></input>
-                    <input hidden id="search__longtitude"></input>
+                    <label for="input__search" entryblock>Search terms or keywords:</label>
+                    <input id="input__search" placeholder="e.g KA" entryblock></input>
+                    <input hidden id="search__latitude" entryblock></input>
+                    <input hidden id="search__longtitude" entryblock></input>
                     <button type="submit">Search</button>
                 </fieldset>    
 
