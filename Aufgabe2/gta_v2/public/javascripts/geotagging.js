@@ -60,8 +60,16 @@ class LocationHelper {
 
     static updateLocation() {
         this.findLocation((helper) => {
-            document.getElementById("input__longitude").value = helper.#longitude;
-            document.getElementById("input__latitude").value = helper.#latitude;
+            const lat = helper.latitude;
+            const lon = helper.longitude;
+            document.getElementById("input__longitude").value = lon;
+            document.getElementById("input__latitude").value = lat;
+            document.getElementById("search__longitude").value = lon;
+            document.getElementById("search__latitude").value = lat;
+
+            var mapManager = new MapManager('GSIfAv4ZScE9no37RR4WIb9577jV8VNg');
+            var src = mapManager.getMapUrl(lat, lon, [], 15);
+            document.getElementById("mapView").src = src;
         });
     }
 }
@@ -113,6 +121,5 @@ class MapManager {
 
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
-    alert("Please change the script 'geotagging.js'");
     LocationHelper.updateLocation();
 });
