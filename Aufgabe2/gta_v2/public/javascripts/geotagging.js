@@ -57,6 +57,13 @@ class LocationHelper {
             alert(error.message)
         });
     }
+
+    static updateLocation() {
+        this.findLocation((helper) => {
+            document.getElementById("input__longitude").value = helper.#longitude;
+            document.getElementById("input__latitude").value = helper.#latitude;
+        });
+    }
 }
 
 /**
@@ -107,4 +114,5 @@ class MapManager {
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {
     alert("Please change the script 'geotagging.js'");
+    LocationHelper.updateLocation();
 });
