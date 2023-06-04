@@ -37,18 +37,17 @@
                     <legend>Add new GeoTag</legend>
 
                     <label for="input__latitude" class="entryblockLeft">Latitude:</label>
-                    <input id="input__latitude" class="entryblockLeft" placeholder="e.g 49.01379" disabled></input>
+                    <input name="latitude" id="input__latitude" class="entryblockLeft disabled" value="<%= ejs_lat %>" readonly></input>
 
                     <label for="input__longitude" class="entryblockLeft">Longitude:</label>
-                    <input id="input__longitude" class="entryblockLeft" placeholder="e.g 8.03223" disabled></input>
+                    <input name="longitude" id="input__longitude" class="entryblockLeft disabled" value="<%= ejs_long %>"  readonly></input>
 
                     <label for="input__name" class="entryblockLeft">Name:</label>
-                    <input id="input__name" class="entryblockLeft" placeholder="e.g central Karlsruhe" required
+                    <input name="name" id="input__name" class="entryblockLeft" placeholder="e.g central Karlsruhe" required
                         maxlength="10"></input>
 
                     <label for="input__hashtag" class="entryblockLeft">Hashtag:</label>
-                    <input id="input__hashtag" class="entryblockLeft" placeholder="e.g #KA" pattern="#.+"
-                        maxlength="10"></input>
+                    <input name="hashtag" id="input__hashtag" class="entryblockLeft" placeholder="e.g #KA" pattern="#.+" maxlength="10"></input>
 
                     <button type="submit" class="entryblockLeft">Add Tag</button>
                 </fieldset>
@@ -65,9 +64,9 @@
                 <fieldset>
                     <legend>Search</legend>
                     <label for="input__search" class="entryblockRight">Search terms or keywords:</label>
-                    <input id="input__search" placeholder="e.g KA" class="entryblockRight"></input>
-                    <input id="search__latitude" hidden></input>
-                    <input id="search__longitude" hidden></input>
+                    <input name="keyword" id="input__search" placeholder="e.g KA" class="entryblockRight"></input>
+                    <input name="latitude" id="search__latitude" value="<%= ejs_lat %>" hidden></input>
+                    <input name="longitude" id="search__longitude" value="<%= ejs_long %>" hidden></input>
                     <button type="submit" class="entryblockRight">Search</button>
                 </fieldset>
 
@@ -84,7 +83,7 @@
                 </div>
 
                 <div class="discovery__map">
-                    <img src="./images/mapview.jpg" alt="a map with locations" id="mapView" />
+                    <img src="./images/mapview.jpg" alt="a map with locations" id="mapView" data-tags="<%= ejs_tags %>"/>
                     <span>Result map</span>
                 </div>
             </div>
@@ -99,6 +98,8 @@
 
 
 <script src="./javascripts/geotagging.js"></script>
+<script src="./javascripts/location-helper.js"></script>
+<script src="./javascripts/map-manager.js"></script>
 
 </html>
 

@@ -36,6 +36,11 @@ class InMemoryGeoTagStore {
     this.geotags = this.geotags.filter((geotag) => geotag.name !== name);
   }
 
+  alltags() {
+    return this.geotags;
+  }
+
+
   getNearbyGeoTags(location, radius) {
     const nearbyGeoTags = [];
     for (const geotag of this.geotags) {
@@ -44,19 +49,20 @@ class InMemoryGeoTagStore {
         nearbyGeoTags.push(geotag);
       }
     }
+    return nearbyGeoTags;
   }
 
   searchNearbyGeoTags(location, radius, keyword) {
     const nearbyGeoTags = [];
     for (const geotag of this.geotags) {
       let distance = calculateDistance(location, geotag);
-      if (
-        distance <= radius &&
-        (geotag.name.includes(keyword) || geotag.hashtag.includes(keyword))
-      ) {
+      if (distance <= radius && ( keyword == '' || (geotag.name.includes(keyword) || geotag.hashtag.includes(keyword)))) {
+        console.log("test");
         nearbyGeoTags.push(geotag);
       }
     }
+    return nearbyGeoTags;
+
   }
 }
 

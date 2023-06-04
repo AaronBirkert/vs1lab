@@ -135,7 +135,7 @@ a {
   height: 50px;
   text-align: center;
   vertical-align: bottom;
-  position: sticky;
+  position: absolute;
   line-height: 50px;
 }
 
@@ -162,6 +162,11 @@ a {
   display: block;
   margin: 10px;
   width: 90%;
+}
+
+.disabled {
+  color: gray;
+  pointer-events: none;
 }
 
 .entryblockRight{

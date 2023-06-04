@@ -4,6 +4,10 @@
  * A class to help using the HTML5 Geolocation API.
  */
 // eslint-disable-next-line no-unused-vars
+/**
+ * A class to help using the HTML5 Geolocation API.
+ */
+
 class LocationHelper {
     // Location values for latitude and longitude are private properties to protect them from changes.
     #latitude = '';
@@ -22,38 +26,54 @@ class LocationHelper {
     }
 
     /**
-     * Create LocationHelper instance if coordinates are known.
-     * @param {string} latitude 
-     * @param {string} longitude 
-     */
-    constructor(latitude, longitude) {
-        this.#latitude = (parseFloat(latitude)).toFixed(5);
-        this.#longitude = (parseFloat(longitude)).toFixed(5);
-    }
-
-    /**
      * The 'findLocation' method requests the current location details through the geolocation API.
      * It is a static method that should be used to obtain an instance of LocationHelper.
      * Throws an exception if the geolocation API is not available.
      * @param {*} callback a function that will be called with a LocationHelper instance as parameter, that has the current location details
      */
     static findLocation(callback) {
-        const geoLocationApi = navigator.geolocation
+        const geoLocationApi = navigator.geolocation;
 
         if (!geoLocationApi) {
             throw new Error("The GeoLocation API is unavailable.");
         }
+
         // Call to the HTML5 geolocation API.
         // Takes a first callback function as argument that is called in case of success.
         // Second callback is optional for handling errors.
         // These callbacks are given as arrow function expressions.
         geoLocationApi.getCurrentPosition((location) => {
             // Create and initialize LocationHelper object.
-            let helper = new LocationHelper(location.coords.latitude, location.coords.longitude);
+            let helper = new LocationHelper();
+            helper.#latitude = location.coords.latitude.toFixed(5);
+            helper.#longitude = location.coords.longitude.toFixed(5);
             // Pass the locationHelper object to the callback.
             callback(helper);
         }, (error) => {
             alert(error.message)
+        });
+    }
+
+    static updateLocation() {
+        this.findLocation((helper) => {
+            const lat = helper.latitude;
+            const lon = helper.longitude;
+            document.getElementById("input__longitude").value = lon;
+            document.getElementById("input__latitude").value = lat;
+            document.getElementById("search__longitude").value = lon;
+            document.getElementById("search__latitude").value = lat;
+
+            var imgMap = document.getElementById("mapView");
+
+            var mapManager = new MapManager('GSIfAv4ZScE9no37RR4WIb9577jV8VNg');
+            var tags = null;
+            if (imgMap.dataset.tags != "") {
+                tags = JSON.parse(imgMap.dataset.tags);
+                console.log(tags);
+            }
+            var src = mapManager.getMapUrl(lat, lon, tags ?? [], 12);
+            
+            imgMap.src = src;
         });
     }
 }

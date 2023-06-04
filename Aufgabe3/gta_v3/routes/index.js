@@ -13,6 +13,10 @@
 const express = require('express');
 const router = express.Router();
 
+const LocationHelper = require('../public/javascripts/location-helper');
+
+const rad = 50;
+
 /**
  * The module "geotag" exports a class GeoTagStore. 
  * It represents geotags.
@@ -29,7 +33,13 @@ const GeoTag = require('../models/geotag');
  * TODO: implement the module in the file "../models/geotag-store.js"
  */
 // eslint-disable-next-line no-unused-vars
-const GeoTagStore = require('../models/geotag-store');
+const InMemoryGeotagStore = require('../models/geotag-store');
+const GeoTagExamples = require('../models/geotag-examples');
+
+var memStore = new InMemoryGeotagStore();
+GeoTagExamples.tagList.forEach(tag => {
+  memStore.addGeoTag(new GeoTag(0, tag[0], tag[1], tag[2], tag[3]));
+})
 
 /**
  * Route '/' for HTTP 'GET' requests.
@@ -42,7 +52,9 @@ const GeoTagStore = require('../models/geotag-store');
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  res.render('index', { taglist: [] })
+  var tags = memStore.alltags();
+  res.render('index', { taglist: tags, ejs_lat: -1, ejs_long: -1, ejs_tags: JSON.stringify(tags)});
+  //res.render('index', { taglist: [], ejs_lat: -1, ejs_long: -1, ejs_tags: ""});
 });
 
 /**
@@ -60,7 +72,12 @@ router.get('/', (req, res) => {
  * by radius around a given location.
  */
 
-// TODO: ... your code here ...
+router.post('/tagging', (req, res) => {
+  var newTag = new GeoTag(0, req.body["name"], req.body["latitude"], req.body["longitude"], req.body["hashtag"]);
+  memStore.addGeoTag(newTag);
+  var tags = memStore.getNearbyGeoTags({ latitude: newTag.latitude, longitude: newTag.longitude }, rad);
+  res.render('index', { taglist: tags, ejs_lat: newTag.latitude, ejs_long: newTag.longitude, ejs_tags: JSON.stringify(tags)});
+});
 
 /**
  * Route '/discovery' for HTTP 'POST' requests.
@@ -78,6 +95,12 @@ router.get('/', (req, res) => {
  * by radius and keyword.
  */
 
-// TODO: ... your code here ...
+router.post('/discovery', (req, res) => {
+  var lat = req.body["latitude"];
+  var lon = req.body["longitude"];
+  var keyword = req.body["keyword"];
+  var tags = memStore.searchNearbyGeoTags({latitude: lat, longitude: lon}, rad, keyword);
+  res.render('index', {taglist: tags, ejs_lat: lat, ejs_long: lon, ejs_tags: JSON.stringify(tags)});
+});
 
 module.exports = router;
