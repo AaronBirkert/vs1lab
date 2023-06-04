@@ -54,7 +54,6 @@ GeoTagExamples.tagList.forEach(tag => {
 router.get('/', (req, res) => {
   var tags = memStore.alltags();
   res.render('index', { taglist: tags, ejs_lat: -1, ejs_long: -1, ejs_tags: JSON.stringify(tags)});
-  //res.render('index', { taglist: [], ejs_lat: -1, ejs_long: -1, ejs_tags: ""});
 });
 
 /**

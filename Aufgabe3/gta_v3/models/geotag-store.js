@@ -57,7 +57,6 @@ class InMemoryGeoTagStore {
     for (const geotag of this.geotags) {
       let distance = calculateDistance(location, geotag);
       if (distance <= radius && ( keyword == '' || (geotag.name.includes(keyword) || geotag.hashtag.includes(keyword)))) {
-        console.log("test");
         nearbyGeoTags.push(geotag);
       }
     }
