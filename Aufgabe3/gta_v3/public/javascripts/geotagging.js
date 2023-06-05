@@ -46,7 +46,7 @@ function updateLocation() {
             document.getElementById("search__longitude").value = lon;
             document.getElementById("search__latitude").value = lat;
 
-            mapSrc = mapManager.getMapUrl(lat, lon, tags ?? [], 12);
+            mapSrc = mapManager.getMapUrl(lat, lon, tags ?? [], 14);
             imgMap.src = mapSrc;
         });
     }

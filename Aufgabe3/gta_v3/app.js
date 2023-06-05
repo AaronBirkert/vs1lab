@@ -39,7 +39,7 @@ app.use(express.urlencoded({ extended: false }));
 /**
  * VS1LAB:
  * Configure path for static content.
- * Test the result in a browser here: 'http://localhost:3000/'.
+ * Test the result in a browser here: 'http://localhost:3001/'.
  */
 
 // TODO: ... your code here ...
