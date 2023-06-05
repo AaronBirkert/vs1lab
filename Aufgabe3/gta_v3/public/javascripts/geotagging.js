@@ -52,7 +52,7 @@ function updateLocation() {
     }
     //else we can just use the lat and long from the document.
     else {
-        mapSrc = mapManager.getMapUrl(lat, lon, tags ?? [], 12);
+        mapSrc = mapManager.getMapUrl(lat, lon, tags ?? [], 14);
         imgMap.src = mapSrc;
     }
 
