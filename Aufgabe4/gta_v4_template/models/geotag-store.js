@@ -79,6 +79,7 @@ class InMemoryGeoTagStore {
   }
 
   updateTag(id, geotag) {
+    geotag.id = id;
     this.geotags[this.geotags.indexOf(this.geotagById(id))] = geotag;
   }
 

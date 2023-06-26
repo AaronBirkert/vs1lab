@@ -1,0 +1,30 @@
+GET All
+GET http://localhost:3000/api/geotags
+
+get ID
+GET http://localhost:3000/api/geotags/1
+
+post
+POST http://localhost:3000/api/geotags HTTP/1.1
+content-type: application/json
+
+{
+    "name": "test",
+    "hashtag": "#test",
+    "longitude": "1",
+    "latitude": "5"
+}
+
+put
+PUT http://localhost:3000/api/geotags/0 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "neu",
+    "hashtag": "#neu",
+    "longitude": "15",
+    "latitude": "15"
+}
+
+delete
+DELETE http://localhost:3000/api/geotags/0

@@ -30,7 +30,7 @@ const GeoTagExamples = require('../models/geotag-examples');
 
 var memStore = new GeoTagStore();
 GeoTagExamples.tagList.forEach(tag => {
-  memStore.addGeoTag(new GeoTag(0, tag[0], tag[1], tag[2], tag[3]));
+  memStore.addGeoTag(new GeoTag(-1, tag[0], tag[1], tag[2], tag[3]));
 })
 
 // App routes (A3)
@@ -47,67 +47,6 @@ router.get('/', (req, res) => {
   var tags = memStore.alltags();
   res.render('index', { taglist: tags, ejs_lat: -1, ejs_long: -1, ejs_tags: JSON.stringify(tags) });
 });
-
-/**
- * Route '/tagging' for HTTP 'POST' requests.
- * (http://expressjs.com/de/4x/api.html#app.post.method)
- *
- * Requests cary the fields of the tagging form in the body.
- * (http://expressjs.com/de/4x/api.html#req.body)
- *
- * Based on the form data, a new geotag is created and stored.
- *
- * As response, the ejs-template is rendered with geotag objects.
- * All result objects are located in the proximity of the new geotag.
- * To this end, "GeoTagStore" provides a method to search geotags 
- * by radius around a given location.
- */
-
-// router.post('/tagging', (req, res) => {
-//   var newTag = new GeoTag(0, req.body["name"], req.body["latitude"], req.body["longitude"], req.body["hashtag"]);
-//   memStore.addGeoTag(newTag);
-//   rad = 1;
-//   var tags = memStore.getNearbyGeoTags({ latitude: newTag.latitude, longitude: newTag.longitude }, rad);
-//   res.render('index', { taglist: tags, ejs_lat: newTag.latitude, ejs_long: newTag.longitude, ejs_tags: JSON.stringify(tags) });
-// });
-
-/**
- * Route '/discovery' for HTTP 'POST' requests.
- * (http://expressjs.com/de/4x/api.html#app.post.method)
- *
- * Requests cary the fields of the discovery form in the body.
- * This includes coordinates and an optional search term.
- * (http://expressjs.com/de/4x/api.html#req.body)
- *
- * As response, the ejs-template is rendered with geotag objects.
- * All result objects are located in the proximity of the given coordinates.
- * If a search term is given, the results are further filtered to contain 
- * the term as a part of their names or hashtags. 
- * To this end, "GeoTagStore" provides methods to search geotags 
- * by radius and keyword.
- */
-
-// router.post('/discovery', (req, res) => {
-//   var lat = req.body["latitude"];
-//   var lon = req.body["longitude"];
-//   var keyword = req.body["keyword"];
-//   var tags = memStore.searchNearbyGeoTags({ latitude: lat, longitude: lon }, rad, keyword);
-//   res.render('index', { taglist: tags, ejs_lat: lat, ejs_long: lon, ejs_tags: JSON.stringify(tags) });
-// });
-
-// API routes (A4)
-
-/**
- * Route '/api/geotags' for HTTP 'GET' requests.
- * (http://expressjs.com/de/4x/api.html#app.get.method)
- *
- * Requests contain the fields of the Discovery form as query.
- * (http://expressjs.com/de/4x/api.html#req.body)
- *
- * As a response, an array with Geo Tag objects is rendered as JSON.
- * If 'searchterm' is present, it will be filtered by search term.
- * If 'latitude' and 'longitude' are available, it will be further filtered based on radius.
- */
 
 router.get('/api/geotags', (req, res) => {
   var searchTerm = req.query.searchterm;
