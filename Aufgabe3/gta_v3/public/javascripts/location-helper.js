@@ -66,12 +66,12 @@ class LocationHelper {
             var imgMap = document.getElementById("mapView");
 
             var mapManager = new MapManager('GSIfAv4ZScE9no37RR4WIb9577jV8VNg');
-            var tags = null;
+            var tags = [];
             if (imgMap.dataset.tags != "") {
                 tags = JSON.parse(imgMap.dataset.tags);
                 console.log(tags);
             }
-            var src = mapManager.getMapUrl(lat, lon, tags ?? [], 12);
+            var src = mapManager.getMapUrl(lat, lon, tags, 12);
             
             imgMap.src = src;
         });

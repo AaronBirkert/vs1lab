@@ -46,13 +46,13 @@ function updateLocation() {
             document.getElementById("search__longitude").value = lon;
             document.getElementById("search__latitude").value = lat;
 
-            mapSrc = mapManager.getMapUrl(lat, lon, tags ?? [], 12);
+            mapSrc = mapManager.getMapUrl(lat, lon, tags ?? [], 14);
             imgMap.src = mapSrc;
         });
     }
     //else we can just use the lat and long from the document.
     else {
-        mapSrc = mapManager.getMapUrl(lat, lon, tags ?? [], 12);
+        mapSrc = mapManager.getMapUrl(lat, lon, tags ?? [], 14);
         imgMap.src = mapSrc;
     }
 

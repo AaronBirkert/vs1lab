@@ -63,13 +63,13 @@ router.get('/', (req, res) => {
  * by radius around a given location.
  */
 
-router.post('/tagging', (req, res) => {
-  var newTag = new GeoTag(0, req.body["name"], req.body["latitude"], req.body["longitude"], req.body["hashtag"]);
-  memStore.addGeoTag(newTag);
-  rad = 1;
-  var tags = memStore.getNearbyGeoTags({ latitude: newTag.latitude, longitude: newTag.longitude }, rad);
-  res.render('index', { taglist: tags, ejs_lat: newTag.latitude, ejs_long: newTag.longitude, ejs_tags: JSON.stringify(tags) });
-});
+// router.post('/tagging', (req, res) => {
+//   var newTag = new GeoTag(0, req.body["name"], req.body["latitude"], req.body["longitude"], req.body["hashtag"]);
+//   memStore.addGeoTag(newTag);
+//   rad = 1;
+//   var tags = memStore.getNearbyGeoTags({ latitude: newTag.latitude, longitude: newTag.longitude }, rad);
+//   res.render('index', { taglist: tags, ejs_lat: newTag.latitude, ejs_long: newTag.longitude, ejs_tags: JSON.stringify(tags) });
+// });
 
 /**
  * Route '/discovery' for HTTP 'POST' requests.
@@ -87,13 +87,13 @@ router.post('/tagging', (req, res) => {
  * by radius and keyword.
  */
 
-router.post('/discovery', (req, res) => {
-  var lat = req.body["latitude"];
-  var lon = req.body["longitude"];
-  var keyword = req.body["keyword"];
-  var tags = memStore.searchNearbyGeoTags({ latitude: lat, longitude: lon }, rad, keyword);
-  res.render('index', { taglist: tags, ejs_lat: lat, ejs_long: lon, ejs_tags: JSON.stringify(tags) });
-});
+// router.post('/discovery', (req, res) => {
+//   var lat = req.body["latitude"];
+//   var lon = req.body["longitude"];
+//   var keyword = req.body["keyword"];
+//   var tags = memStore.searchNearbyGeoTags({ latitude: lat, longitude: lon }, rad, keyword);
+//   res.render('index', { taglist: tags, ejs_lat: lat, ejs_long: lon, ejs_tags: JSON.stringify(tags) });
+// });
 
 // API routes (A4)
 
